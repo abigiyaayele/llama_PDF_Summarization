@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Summarizer</title>
+</head>
+<body>
+    <h1>PDF Summarizer</h1>
+    <form id="uploadForm">
+        <label for="pdfFile">Upload your PDF:</label>
+        <input type="file" id="pdfFile" name="pdfFile" accept=".pdf" required>
+        <button type="submit">Summarize</button>
+    </form>
+    <div id="result">
+        <h2>Summary:</h2>
+        <p id="summaryText"></p>
+    </div>
+    <script src="/static/scripts.js"></script>
+</body>
+</html>

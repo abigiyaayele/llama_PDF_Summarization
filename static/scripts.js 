@@ -1,0 +1,28 @@
+document.getElementById("uploadForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const fileInput = document.getElementById("pdfFile");
+    const formData = new FormData();
+    formData.append("file", fileInput.files[0]);
+
+    const resultDiv = document.getElementById("result");
+    const summaryText = document.getElementById("summaryText");
+
+    try {
+        const response = await fetch("/summarize", {
+            method: "POST",
+            body: formData,
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            summaryText.textContent = data.summary;
+        } else {
+            summaryText.textContent = "Error: Unable to summarize the PDF.";
+        }
+    } catch (error) {
+        summaryText.textContent = `Error: ${error.message}`;
+    }
+
+    resultDiv.style.display = "block";
+});
